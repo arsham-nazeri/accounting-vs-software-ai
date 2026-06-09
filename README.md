@@ -102,3 +102,21 @@ README.md
 ## Author
 
 [Arsham Nazeri](https://arsham-nazeri.github.io) · ·
+
+
+## Visualizations
+
+### AI Exposure, Wages & Employment
+![Comparison](figures/assignment1_comparison.png)
+
+### Task-Level AI Substitutability
+![Task Decomposition](figures/assignment1_task_decomposition.png)
+
+### Weighted Task Substitutability
+![Weighted Scores](figures/assignment1_weighted_scores.png)
+
+### Diverging Labor Market Trajectories
+![Trends](figures/assignment1_trends.png)
+
+### Regression Analysis
+![Regression](figures/assignment1_regression.png)
