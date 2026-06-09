@@ -1,106 +1,104 @@
-# Credential Without Protection
-## AI Exposure and Diverging Labor Market Outcomes in Accounting vs. Software Development
+# AI Exposure and Labor Market Outcomes
+## Replication and Extension — Felten et al. (2021) × BLS OEWS 2025
 
-An empirical analysis of why two occupations with similar AI exposure 
-scores — accountants and software developers — face fundamentally 
-different labor market trajectories.
+An empirical analysis of how AI occupational exposure relates to wages 
+across the US labor market, with a focused case study on accounting 
+vs. software development.
 
-**Author:** [Arsham Nazeri](https://arsham-nazeri.github.io) · George Mason University · ECON 695 AI Economics · Summer 2026
+Inspired by Acemoglu & Restrepo (2018, 2019) task-based framework 
+and Felten, Raj & Seamans (2021) AIOE index.
 
 ---
 
-## Key Finding
+## Research Questions
 
-> AI exposure is positively associated with wages — a one-standard-deviation 
-> increase in the standardized AIOE predicts roughly 8% higher pay 
-> (β=0.082, HC3 p=0.041) — but this gradient reflects occupational 
-> sorting rather than protection. Exposure marks which occupations lie 
-> in AI's path; task structure determines whether AI substitutes for 
-> or complements their labor.
+- Does AI exposure predict wages once education is controlled for?
+- Does the wage-exposure gradient reflect sorting or protection?
+- Why do accounting and software development diverge despite similar exposure?
 
 ---
 
 ## Data Sources
 
-| Source | Use |
-|---|---|
-| **Felten, Raj & Seamans (2021)** | AI Occupational Exposure (AIOE) index |
-| **BLS OEWS 2025** | Median wages and employment for 670 occupations |
-| **O*NET 29.0 (2023)** | Required education level per occupation |
-| **Fedyk et al. (2022)** | Resume-based accounting displacement estimates |
-| **Peng et al. (2023)** | GitHub Copilot RCT productivity estimates |
+| Source | File | Use |
+|---|---|---|
+| **Felten et al. (2021)** | `data/AIOE_DataAppendix.xlsx` | AI exposure scores |
+| **BLS OEWS 2025** | `data/oews_2025/` | Wages and employment |
+| **O*NET 29.0 (2023)** | `data/onet_education.xlsx` | Education requirements |
 
 ---
 
 ## Methods
 
-- Task decomposition using O*NET task descriptions
-- Weighted Task Substitutability Score (labor-share weighted)
-- WLS regression across 658 occupations weighted by employment
+- Merged AIOE index with BLS OEWS 2025 on 6-digit SOC code
+- O*NET education level as independent skill proxy
+- WLS regression weighted by total employment
 - HC3 heteroskedasticity-robust standard errors
-- Indexed employment and wage trajectories (2019–2025)
+- Education collapsed to modal category per SOC code
 
 ---
 
-## Regression Specification
+## Final Regression Specification
 
 ln(w_i) = β₀ + β₁·AIOE_i + β₂·Education_i + ε_i
 
-Estimated via WLS weighted by total employment (N=658).
+N=658 occupations (670 matched on AIOE × BLS, 658 with O*NET education data)
 
 ---
 
-## Results
+## Key Results (HC3 Robust SEs)
 
-### Occupation Comparison
+| Variable | Coefficient | Std. Error | t | p-value |
+|---|---|---|---|---|
+| AIOE | 0.082** | 0.040 | 2.040 | 0.041 |
+| Education Level | 0.114*** | 0.020 | 5.827 | <0.001 |
+| Constant | 10.564*** | 0.094 | — | <0.001 |
+| R-squared | 0.511 | | | |
 
-| | Accountants & Auditors | Software Developers |
-|---|---|---|
-| AIOE Score | 1.48 | 1.20 |
-| Median Wage | $83,680 | $135,980 |
-| Labor time at risk | 60% | 50% |
-| Post-2022 trend | ↓ Declining | ~ Decelerating |
-
-### Regression Results (HC3 Robust SEs)
-
-| Variable | Coefficient | Std. Error | p-value |
-|---|---|---|---|
-| AIOE | 0.082** | 0.040 | 0.041 |
-| Education Level | 0.114*** | 0.020 | <0.001 |
-| Constant | 10.564*** | 0.094 | <0.001 |
-| R-squared | 0.511 | | |
-| N | 658 | | |
+**Interpretation:** The positive wage-exposure gradient reflects 
+occupational sorting — AI exposure concentrates in high-skill 
+cognitive occupations already well-paid before generative AI. 
+Whether exposure becomes substitution or complementarity is 
+determined by task structure, not exposure level.
 
 ---
 
-## Visualizations
+## Notebooks
 
-### AI Exposure, Wages & Employment
-![Comparison](figures/assignment1_comparison.png)
-
-### Task-Level AI Substitutability
-![Task Decomposition](figures/assignment1_task_decomposition.png)
-
-### Weighted Task Substitutability
-![Weighted Scores](figures/assignment1_weighted_scores.png)
-
-### Diverging Labor Market Trajectories
-![Trends](figures/assignment1_trends.png)
-
-### Regression Analysis
-![Regression](figures/assignment1_regression.png)
+| Notebook | Contents |
+|---|---|
+| `notebooks/Assignment-analysis.ipynb` | Full analysis pipeline |
+| `notebooks/analysis.ipynb` | Exploratory analysis |
 
 ---
 
-## Paper
+## Outputs
 
-Full paper available as `AI_Labor_Assignment_1_Ahmad_Nazeri.pdf`  
-LaTeX source: `main.tex` (compile with pdflatex + bibtex)
+| File | Description |
+|---|---|
+| `outputs/assignment1_regression.png` | Main regression figure |
+| `outputs/regression_final_results.txt` | HC3 regression output |
+
+---
+
+## Repository Structure
+
+
+ai-labor-replication/
+data/
+AIOE_DataAppendix.xlsx    ← Felten et al. exposure scores
+oews_2025/                ← BLS OEWS 2025 data
+onet_education.xlsx       ← O*NET education requirements
+notebooks/
+Assignment-analysis.ipynb ← Main analysis
+outputs/
+assignment1_regression.png
+regression_final_results.txt
+requirements.txt
+README.md
 
 ---
 
 ## Author
 
-[Arsham Nazeri](https://arsham-nazeri.github.io) ·
-Thinking about markets, institutions, technology, and the culture 
-that shapes them.
+[Arsham Nazeri](https://arsham-nazeri.github.io) · ·
