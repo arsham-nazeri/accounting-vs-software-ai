@@ -15,7 +15,7 @@ vs. software development.
 Two occupations with similar AI exposure scores face completely different
 labor market trajectories. Why?
 
-![Comparison](outputs/assignment1_comparison.png)
+![Comparison](figures/assignment1_comparison.png)
 *Despite similar AI exposure, software developers earn 60–80% more than
 accountants and face growing employment while accounting contracts.*
 
@@ -44,11 +44,11 @@ accountants and face growing employment while accounting contracts.*
 The divergence comes from *where* AI exposure is concentrated within
 each occupation — not the overall exposure level.
 
-![Task Decomposition](outputs/assignment1_task_decomposition.png)
+![Task Decomposition](figures/assignment1_task_decomposition.png)
 *Accounting concentrates substitutable tasks at the core of the occupation;
 software development maintains a deeper complementarity buffer.*
 
-![Weighted Scores](outputs/assignment1_weighted_scores.png)
+![Weighted Scores](figures/assignment1_weighted_scores.png)
 *Accounting concentrates 60% of labor time in high-substitutability tasks
 vs. 50% for software development.*
 
@@ -56,7 +56,7 @@ vs. 50% for software development.*
 
 ## Diverging Trajectories
 
-![Trends](outputs/assignment1_trends.png)
+![Trends](figures/assignment1_trends.png)
 *Post-ChatGPT (Nov 2022): accounting employment contracts while software
 development decelerates. Task structure predicts direction; exposure alone does not.*
 
@@ -78,7 +78,7 @@ N = 658 occupations (670 matched on AIOE × BLS; 658 with O*NET education data)
 
 \*\*\* p<0.001, \*\* p<0.05
 
-![Regression](outputs/assignment1_regression.png)
+![Regression](figures/assignment1_regression.png)
 *The positive wage-exposure gradient reflects occupational sorting —
 AI exposure concentrates in high-skill cognitive occupations already
 well-paid before generative AI.*
@@ -105,7 +105,7 @@ ai-labor-replication/
 ├── notebooks/
 │   ├── Assignment-analysis.ipynb  ← Main analysis pipeline
 │   └── analysis.ipynb             ← Exploratory analysis
-├── outputs/
+├── figures/
 │   ├── assignment1_regression.png
 │   └── regression_final_results.txt
 ├── requirements.txt
